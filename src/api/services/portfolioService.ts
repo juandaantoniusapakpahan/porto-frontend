@@ -4,6 +4,14 @@ export const portfolioService = {
   // Personal Info
   getPersonalInfo: () => api.get('/api/portfolio/personal-info'),
   updatePersonalInfo: (data: unknown) => api.put('/api/portfolio/personal-info', data),
+  uploadAvatar: (file: File) => {
+    const form = new FormData();
+    form.append('file', file);
+    return api.post('/api/portfolio/personal-info/avatar', form, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  },
+  deleteAvatar: () => api.delete('/api/portfolio/personal-info/avatar'),
 
   // Summary
   getSummary: () => api.get('/api/portfolio/summary'),

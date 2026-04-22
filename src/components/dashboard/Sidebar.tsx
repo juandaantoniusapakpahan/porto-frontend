@@ -68,8 +68,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ completeness, onClose }) => {
         {/* User info */}
         {user && (
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-accent-400 flex items-center justify-center text-white font-bold text-sm">
-              {(user.fullName || user.username)?.[0]?.toUpperCase() || 'U'}
+            <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
+              {store.personalInfo?.avatarUrl ? (
+                <img
+                  src={store.personalInfo.avatarUrl}
+                  alt={user.fullName || user.username}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-primary-400 to-accent-400 flex items-center justify-center text-white font-bold text-sm">
+                  {(user.fullName || user.username)?.[0]?.toUpperCase() || 'U'}
+                </div>
+              )}
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold text-gray-900 truncate">{user.fullName || user.username}</p>

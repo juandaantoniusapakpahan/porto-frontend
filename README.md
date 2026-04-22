@@ -55,23 +55,39 @@ Portfolio Frontend built with **React 19 + TypeScript + Vite**, featuring a publ
 
 ## Environment Variables
 
-Create a `.env` file in the project root:
+Copy `.env.example` and fill in the values:
+
+```bash
+cp .env.example .env
+```
+
+Then edit `.env`:
 
 ```env
+# Backend API base URL
 VITE_API_URL=http://localhost:8080
+
+# Frontend app URL (used for OAuth redirects)
+VITE_APP_URL=http://localhost:5173
 ```
 
 | Variable | Description | Default |
 |---|---|---|
 | `VITE_API_URL` | Backend base URL | `http://localhost:8080` |
+| `VITE_APP_URL` | Frontend app URL | `http://localhost:5173` |
+
+> `.env` is listed in `.gitignore` and will never be committed. Only `.env.example` is tracked.
 
 ## Running Locally
 
 ```bash
-# Install dependencies
+# 1. Copy env file
+cp .env.example .env
+
+# 2. Install dependencies
 npm install
 
-# Start development server
+# 3. Start development server
 npm run dev
 ```
 
